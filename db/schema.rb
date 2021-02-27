@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_205508) do
+ActiveRecord::Schema.define(version: 2021_02_27_154620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2021_02_25_205508) do
   end
 
   create_table "user_games", force: :cascade do |t|
-    t.boolean "completed"
-    t.boolean "owned"
-    t.boolean "wishlist"
-    t.boolean "recommend"
+    t.boolean "completed", default: false
+    t.boolean "owned", default: false
+    t.boolean "wishlist", default: false
+    t.boolean "recommend", default: false
     t.bigint "game_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
