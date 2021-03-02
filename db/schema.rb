@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 2021_02_27_162951) do
   end
 
   create_table "user_games", force: :cascade do |t|
-    t.boolean "completed"
-    t.boolean "owned"
-    t.boolean "wishlist"
-    t.boolean "recommend"
+    t.boolean "completed", default: false
+    t.boolean "owned", default: false
+    t.boolean "wishlist", default: false
+    t.boolean "recommend", default: false
     t.bigint "game_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
