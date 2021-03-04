@@ -4,17 +4,33 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
-  def new
-    @game = Game.new
+  def show
+    game_id = params[:id]
+    @game = Game.find(game_id)
+    @reviews = Reviews.where("game_id = ?", game_id)
   end
 
-  def create
-    @game = Game.new(game_params)
+  def search
+    query = params[:q]
+    @games = Game.where("name ILIKE ?", "%#{query}%")
+  end
+
+  def random
+    @game = Game.find(rand(1..Game.count))
+  end
+
+  def show
+    @game = Game.find(params[:id])
+    # @recommendations = Game.where(genre: @game.genre)
+    recommendation(@game)
+  end
+
+  def recommendation(game)
+    @game = Game.where_exists(:genres, name: game.genres.pluck(:name))
+    @games = Game.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+    raise
   end
 
   private
 
-  def game_params
-    params.require(:game).permit(:title, :age_rating, :description, :metacritic)
-  end
 end
