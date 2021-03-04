@@ -21,14 +21,14 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    # @recommendations = Game.where(genre: @game.genre)
-    recommendation(@game)
+    @recommendations = recommendation(@game)
   end
 
   def recommendation(game)
-    @game = Game.where_exists(:genres, name: game.genres.pluck(:name))
-    @games = Game.where_not_exists(:user_games, user_id: current_user.id, completed: true)
-    raise
+    @games = Game.where_exists(:genres, id: game.genres.ids)
+    @games = Game.where_exists(:platforms, id: game.platforms.ids)
+    @games = @games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+    @games = @games.where_not_exists(:user_games, user_id: current_user.id, recommend: true)
   end
 
   private

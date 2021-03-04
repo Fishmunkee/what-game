@@ -13,6 +13,8 @@ Platform.destroy_all
 Medium.destroy_all
 Review.destroy_all
 UserGame.destroy_all
+GamesGenre.destroy_all
+GamesPlatform.destroy_all
 
 puts "Seeding the users..."
 olli = User.create!(
@@ -50,12 +52,25 @@ puts "Seeding the Genres..."
   )
 end
 
+puts "Seeding the Game Genres"
+50.times do games_genre = GamesGenre.create!(
+  game_id: Game.all.sample.id,
+  genre_id: Genre.all.sample.id
+  )
+end
+
 puts "Seeding the platforms..."
 7.times do platform = Platform.create!(
   name: Faker::Game.platform
   )
 end
 
+puts "seeding the Game Platforms..."
+50.times do games_platform = GamesPlatform.create!(
+  game_id: Game.all.sample.id,
+  platform_id: Platform.all.sample.id
+  )
+end
 puts "Seeding the media..."
 5.times do media = Medium.create!(
   url: "https://google.com",
