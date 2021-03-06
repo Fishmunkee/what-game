@@ -1,3 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1>What Game? </h1>
+    <p>We are here to help you find your next best game to play!</p>
+  </div>
+</div>
+<%= content_for(:footer_class, "footer-home") %>
 

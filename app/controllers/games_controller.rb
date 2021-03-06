@@ -2,6 +2,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    query = params[:q]
+    @games_result = Game.where("name ILIKE ?", "%#{query}%")
   end
 
   def show
@@ -23,6 +25,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @recommendations = recommendation(@game)
   end
+
+  private
 
   def recommendation(game)
     @games = Game.where_exists(:genres, id: game.genres.ids)
