@@ -1,0 +1,30 @@
+.main-footer {
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  justify-content: space-between;
+  background: white;
+}
+
+.footer-home{
+  position: absolute;
+  padding: 5px;
+  width: 100%;
+  bottom: 0px;
+  background: transparent;
+  box-shadow: none;
+}
+
+
+.social-media a{
+font-size: 24px;
+text-decoration: none;
+color: white;
+padding: 5px;
+}
+
+a:hover {
+  color:blue;
+}
+

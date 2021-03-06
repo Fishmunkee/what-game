@@ -24,6 +24,8 @@ class GamesController < ApplicationController
     @recommendations = recommendation(@game)
   end
 
+  private
+
   def recommendation(game)
     @games = Game.where_exists(:genres, id: game.genres.ids)
     @games = Game.where_exists(:platforms, id: game.platforms.ids)
