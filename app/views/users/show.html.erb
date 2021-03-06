@@ -6,28 +6,37 @@
   </div>
 </div>
 <div class="games-list text-colour-white">
-  <div> Completed
-    <% @user.user_games.each do |user_game| %>
-        <% if user_game.completed %>
+  <div>
+    <h1>Completed</h1>
+    <div class="game-card" style="background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/220px-God_of_War_4_cover.jpg)">
+      <% @user.user_games.each do |user_game| %>
+          <% if user_game.completed %>
             <p><%= user_game.game.title %></p>
-        <% end %>
-    <% end %> 
+          <% end %>
+      <% end %> 
+    </div>
   </div>
 
-  <div>Owned
-    <% @user.user_games.each do |user_game| %>
-        <% if user_game.owned %>
+  <div>
+    <h1>Owned</h1>
+    <div class="game-card" style="background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/220px-God_of_War_4_cover.jpg)">
+      <% @user.user_games.each do |user_game| %>
+          <% if user_game.owned %>
             <p><%= user_game.game.title %></p>
-        <% end %>
-    <% end %>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div>Wishlist
-    <% @user.user_games.each do |user_game| %>
-        <% if user_game.wishlist %>
+  <div>
+    <h1>Wishlist</h1>
+    <div class="game-card" style="background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/220px-God_of_War_4_cover.jpg)">
+      <% @user.user_games.each do |user_game| %>
+          <% if user_game.wishlist %>
             <p><%= user_game.game.title %></p>
-        <% end %>
-    <% end %>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>
