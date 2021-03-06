@@ -1,0 +1,67 @@
+
+.container-search {
+  margin-top: 68px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 50px;
+  padding: 10px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+                       rgba(0, 0, 0, 0.3)), image-url("God_of_War.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  // align-content: flex-end;
+  color: white;
+  display: flex;
+  border-radius: 10px;
+  // box-shadow: 2px 2px 25px violet;
+  height: 400px;
+  width: 300px;
+  // background: rgba(50, 50, 50, .5);
+  padding: .5rem;
+  border: 2px solid #eeeeee;
+}
+
+.card-title {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    font-size: 25px;
+  }
+
+}
+
+.card-info-box {
+  position: absolute;
+  display: flex;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  top: 315px;
+  width: 275px;
+  height: 50px;
+  justify-content: space-evenly;
+}
+
+.metacritic {
+  position: absolute;
+  background: lightgreen;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+  // border-radius: 5px 20px 5px;
+  border-radius: 50%;
+  border: 3px solid lightgreen;
+}
