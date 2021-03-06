@@ -10,18 +10,20 @@
         <div class="dropdown">
           <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= f.input :category,
+
+              <%=simple_form_for :games, url: games_path, method: :get do |f|  %>
+              <%#= f.input :platforms,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'},
-            collection: Snippet::CATEGORIES %>
+            input_html: {class: 'category-selector'} %>
 
-              <%= f.association :tags,
+              <%#= f.input :genres,
                   as: :check_boxes,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item' %>
+                  <% end %>
             </div>
         </div>
     </form>

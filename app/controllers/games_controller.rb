@@ -2,6 +2,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    query = params[:q]
+    @games_result = Game.where("name ILIKE ?", "%#{query}%")
   end
 
   def show
