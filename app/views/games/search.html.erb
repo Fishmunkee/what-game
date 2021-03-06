@@ -1,0 +1,25 @@
+<!-- <div class="container-index">
+  <div class= "cards"> -->
+  <div class="cards">
+    <% @games.each do |game| %>
+      <div class="card">
+        <div class="card-title">
+          <h1><%= game.title %></h1>
+        </div>
+        <div class="card-info-box">
+          <p>Action, RPG</p>
+          <p>PS5, PS4</p>
+          <p>18+</p>
+          <!-- <p><%= game.genres.pluck(:name).join(", ")%></p> -->
+              <!-- <h3><%= game.age_rating %></h3> -->
+          <!-- <h3><%= game.platforms.pluck(:name).join(", ")%></h3> -->
+        </div>
+            <!-- <p><%= game.description %></p> -->
+        <div class="metacritic">
+          <p>85</p>
+          <!-- <h2><%= game.metacritic %></h2> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+

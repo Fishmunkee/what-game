@@ -12,7 +12,7 @@ class GamesController < ApplicationController
 
   def search
     query = params[:q]
-    @games = Game.where("name ILIKE ?", "%#{query}%")
+    @games = Game.where("title ILIKE ?", "%#{query}%")
   end
 
   def random
@@ -31,6 +31,6 @@ class GamesController < ApplicationController
     @games = @games.where_not_exists(:user_games, user_id: current_user.id, recommend: true)
   end
 
-  private
+  # private
 
 end
