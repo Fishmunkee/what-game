@@ -1,4 +1,18 @@
 .games-list {
   display: flex;
-  justify-content: space-between;     
+  justify-content: space-between;
+  flex-wrap: wrap;  
+}
+
+body {
+  background-color: #0E100F;
+}
+
+.text-colour-white {
+  color: #FFFFFF;
+}
+
+.showpage-profile {
+  display: flex;
+  justify-content: center;
 }
