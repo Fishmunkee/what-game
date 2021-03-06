@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
@@ -6,28 +6,24 @@
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
         <div class="dropdown">
           <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-               <h6 class="dropdown-header">Genres</h6>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                <label class="form-check-label" for="dropdownCheck2">
-                  Action
-                </label>
-              </div>
-            </div>
-        </div>
-        <div class="dropdown">
-          <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <h6 class="dropdown-header">Platform</h6>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                <label class="form-check-label" for="dropdownCheck2">
-                  PS5
-                </label>
-              </div>
+
+              <%=simple_form_for :games, url: games_path, method: :get do |f|  %>
+              <%#= f.input :platforms,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'} %>
+
+              <%#= f.input :genres,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
+                  <% end %>
             </div>
         </div>
     </form>
@@ -37,7 +33,9 @@
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <% if current_user.avatar.attached? %>
-            <%= cl_image_tag current_user.avatar.key , class: "avatar-square dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.avatar.key , class: "avatar-square dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :fill %>
+          <% else %>
+            <%= image_tag "no-user-avatar.png", class: "avatar-square dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :fill %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Wishlist", "#", class: "dropdown-item" %>
@@ -52,3 +50,4 @@
     </ul>
   </div>
 </div>
+
