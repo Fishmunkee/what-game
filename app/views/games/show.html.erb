@@ -1,0 +1,16 @@
+<div class="text-colour-white">
+  <div>
+    <h1><%= @game.title %></h1>
+  </div>
+
+  <div>
+    <p><%= @game.description %></p>
+  <div>
+
+Screenshots
+  <div>
+    <% @game.medium.each do |media| %>
+      <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
+    <% end %>
+  </div>
+</div>
