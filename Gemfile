@@ -24,6 +24,8 @@ gem 'redis', '~> 4.0'
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'nokogiri', '1.11.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'where_exists'
@@ -38,7 +40,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 
