@@ -9,7 +9,9 @@
 
 Screenshots
   <div>
-    <% @game.medium.each do |media| %>
+
+    <% @game.medium.where("media_type = 'screenshot'").each do |media| %>
+
       <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
     <% end %>
   </div>
