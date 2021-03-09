@@ -79,7 +79,7 @@ Platform.create(igdb_id: 130, name: "Nintendo Switch")
 Platform.create(igdb_id: 167, name: "Playstation 5")
 Platform.create(igdb_id: 169, name: "Xbox Series")
 
-puts "Inserting platfroms complete"
+puts "Inserting platforms complete"
 
 #Get OAuth token from IGBD
 puts "Getting OAuth token"
