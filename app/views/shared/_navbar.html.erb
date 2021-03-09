@@ -7,13 +7,13 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
 
-              <%=simple_form_for :games, url: games_path, method: :get do |f|  %>
-              <%#= f.input :platforms,
-            as: :radio_buttons,
+              <%#=simple_form_for :games, url: games_path, method: :get do |f|  %>
+              <%#= f.input :platforms, collection: Game::PLATFORMS,
+            as: :check_boxes,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
@@ -23,9 +23,9 @@
                   as: :check_boxes,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item' %>
-                  <% end %>
-            </div>
-        </div>
+                  <%# end %>
+       <!--      </div>
+        </div> -->
     </form>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,7 +38,7 @@
             <%= image_tag "no-user-avatar.png", class: "avatar-square dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :fill %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Wishlist", "#", class: "dropdown-item" %>
+            <%= link_to "My Profile", "", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
