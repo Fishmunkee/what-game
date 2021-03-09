@@ -29,7 +29,7 @@ def get_games(token, offset)
   http = Net::HTTP.new('api.igdb.com',443)
   http.use_ssl = true
   request = Net::HTTP::Post.new(URI('https://api.igdb.com/v4/games'), {'Client-ID' => @twitch_client_id, 'Authorization' => "Bearer #{token}"})
-  request.body = "fields name,total_rating,genres,platforms,summary; limit #{@limit}; offset #{offset}; where platforms = (6, 48, 49, 130, 167, 169) & first_release_date > 1299092080 & genres != null & total_rating_count > 0;"
+  request.body = "fields name,total_rating,genres,platforms,summary,cover.image_id,screenshots.image_id,videos.video_id; limit #{@limit}; offset #{offset}; where platforms = (6, 48, 49, 130, 167, 169) & first_release_date > 1299092080 & genres != null & total_rating_count > 0;"
   response = http.request(request).body
   json = JSON.parse(response)
 
@@ -44,6 +44,23 @@ def get_games(token, offset)
       p = Platform.find_by(igdb_id: platform)
       g.platforms << p if p != nil
     end
+
+    if game["cover"] != nil
+      g.medium << Medium.create(media_type: "cover", url: game["cover"]["image_id"])
+    end
+
+    if game["screenshots"] != nil
+      game["screenshots"].each do |screenshot|
+        g.medium << Medium.create(media_type: "screenshot", url: screenshot["image_id"])
+      end
+    end
+
+    if game["videos"] != nil
+      game["videos"].each do |video|
+        g.medium << Medium.create(media_type: "video", url: video["video_id"])
+      end
+    end
+
   end
 
   return json.size
@@ -56,6 +73,7 @@ puts "Clearing existing data"
 UserGame.destroy_all
 GamesGenre.destroy_all
 GamesPlatform.destroy_all
+GamesMedium.destroy_all
 Review.destroy_all
 User.destroy_all
 Game.destroy_all
