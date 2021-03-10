@@ -24,7 +24,10 @@ gem 'redis', '~> 4.0'
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
 
+<<<<<<< HEAD
 gem 'nokogiri', '~> 1.8.5'
+=======
+>>>>>>> 2bff736a28b10be333834b8c622ec64812e213cb
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -36,6 +39,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 
 gem 'cloudinary', '~> 1.16.0'
+gem 'nokogiri', '~> 1.8.5'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

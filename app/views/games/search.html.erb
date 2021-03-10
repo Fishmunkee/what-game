@@ -7,9 +7,8 @@
           <h1><%= game.title %></h1>
         </div>
         <div class="card-info-box">
-          <p>Action, RPG</p>
-          <p>PS5, PS4</p>
-          <p>18+</p>
+          <p><%= game.genres.first %></p>
+          <p><%= game.platforms.first %></p>
           <!-- <p><%= game.genres.pluck(:name).join(", ")%></p> -->
               <!-- <h3><%= game.age_rating %></h3> -->
           <!-- <h3><%= game.platforms.pluck(:name).join(", ")%></h3> -->
