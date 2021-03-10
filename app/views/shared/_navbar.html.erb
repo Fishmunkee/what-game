@@ -48,7 +48,7 @@
             <%= image_tag "no-user-avatar.png", class: "avatar-square dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :fill %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Profile", user_path(@user), class: "dropdown-item" %>
+            <%= link_to "My Profile", "", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
