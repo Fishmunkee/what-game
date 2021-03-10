@@ -3,9 +3,19 @@
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
 
-    <form class="form-inline">
+    <%= form_tag search_games_path, method: :get do %>
+      <%= text_field_tag :q,
+      params[:q],
+      class: "form-control mr-sm-2",
+      placeholder: "Find a game"
+      %>
+      <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+
+    <!-- <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+
 
         <!-- <div class="dropdown">
           <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
@@ -26,7 +36,7 @@
                   <%# end %>
        <!--      </div>
         </div> -->
-    </form>
+   <!--  </form> -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">

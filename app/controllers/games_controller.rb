@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+skip_before_action :authenticate_user!, only: [ :search, :index ]
 
   def index
     @games = Game.all
