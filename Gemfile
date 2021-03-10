@@ -24,7 +24,6 @@ gem 'redis', '~> 4.0'
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
 
-gem 'nokogiri', '1.11.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
