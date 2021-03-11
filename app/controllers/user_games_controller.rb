@@ -2,13 +2,13 @@ class UserGamesController < ApplicationController
 
   def setstatus
     usergame = UserGame.where("user_id = ? AND game_id = ?", current_user, usergames_params)
-    if usergame != nil {
+    if usergame != nil
       usergame.update(usergames_params)
-    } else {
+     else
       usergame = UserGame.new(usergames_params)
       usergame.user = current_user
       usergame.save
-    }
+    end
   end
 
   def recommendations
