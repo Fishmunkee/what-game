@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :usergames, only: [:index] do
+    collection do
+      post 'setstatus'
+    end
+  end
+
 end
 
 
