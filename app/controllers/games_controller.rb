@@ -8,7 +8,7 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
   def show
     game_id = params[:id]
     @game = Game.find(game_id)
-    @reviews = Reviews.where("game_id = ?", game_id)
+    @reviews = Review.where("game_id = ?", game_id)
     @recommendations = recommendation(@game)
   end
 
