@@ -27,7 +27,7 @@
 .click-home:hover{
   text-decoration: none;
   .card-home{
-    border-color:blue;
+    border-color:$purple;
   }
 }
 
@@ -59,14 +59,11 @@
                        rgba(0, 0, 0, 0.3)), image-url("God_of_War.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  // align-content: flex-end;
   color: white;
   display: flex;
   border-radius: 10px;
-  // box-shadow: 2px 2px 25px violet;
   height: 400px;
   width: 300px;
-  // background: rgba(50, 50, 50, .5);
   padding: .5rem;
   border: 2px solid #eeeeee;
 }
