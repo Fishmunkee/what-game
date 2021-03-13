@@ -1,14 +1,16 @@
 class UserGamesController < ApplicationController
 
   def setstatus
-    usergame = UserGame.where("user_id = ? AND game_id = ?", current_user, usergames_params)
-    if usergame != nil
+    usergame = UserGame.where("user_id = ? AND game_id = ?", current_user, params["user_game"]["game_id"])
+    if usergame.first != nil
       usergame.update(usergames_params)
      else
       usergame = UserGame.new(usergames_params)
       usergame.user = current_user
       usergame.save
     end
+      game = Game.find(params["user_game"]["game_id"])
+      redirect_to game
   end
 
   def recommendations
@@ -40,7 +42,7 @@ class UserGamesController < ApplicationController
   private
 
   def usergames_params
-    params.require(:usergames).permit(:game_id, :owned, :completed, :wishlist, :recommend)
+    params.require(:user_game).permit(:game_id, :owned, :completed, :wishlist, :recommend)
   end
 
 end

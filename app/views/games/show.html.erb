@@ -1,19 +1,60 @@
 <div class="text-colour-white">
   <div>
     <h1><%= @game.title %></h1>
+      <% @game.medium.where("media_type = 'cover'").take(1).each do |media| %>
+      <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
+   <% end %>
+
   </div>
 
   <div>
     <p><%= @game.description %></p>
   </div>
 
+  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+    <%= f.hidden_field :game_id, value: @game.id %>
+    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.wishlist %>
+      <%= f.hidden_field :wishlist, value: "0" %>
+      <%= f.submit "Wishlist", class: "btn btn-success" %> 
+    <% else %>
+      <%= f.hidden_field :wishlist, value: "1" %>
+      <%= f.submit "Wishlist", class: "btn btn-secondary" %> 
+    <% end %>
+  <% end %>
+
+  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+    <%= f.hidden_field :game_id, value: @game.id %>
+    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.owned %>
+      <%= f.hidden_field :owned, value: "0" %>
+      <%= f.submit "Owned", class: "btn btn-success" %> 
+    <% else %>
+      <%= f.hidden_field :owned, value: "1" %>
+      <%= f.submit "Owned", class: "btn btn-secondary" %>
+    <% end %>
+  <% end %>
+
+  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+    <%= f.hidden_field :game_id, value: @game.id %>
+    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.completed %>
+      <%= f.hidden_field :completed, value: "0" %>
+      <%= f.submit "Completed", class: "btn btn-success" %> 
+    <% else %>
+      <%= f.hidden_field :completed, value: "1" %>
+      <%= f.submit "Completed", class: "btn btn-secondary" %> 
+    <% end %>
+  <% end %>
+  
 Screenshots
   <div>
-
     <% @game.medium.where("media_type = 'screenshot'").each do |media| %>
-
       <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
     <% end %>
   </div>
-</div>
 
+Videos
+  <div>
+    <% @game.medium.where("media_type = 'video'").each do |media| %>
+      <%=   %>
+    <% end %>
+  </div>
+</div>
