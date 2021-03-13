@@ -3,7 +3,22 @@
 <div class="banner">
   <div class="banner-content text-center">
     <h1>What Game? </h1>
-    <p>We are here to help you find your next best game to play!</p>
+    <div class="cards-home">
+      <div class="card-home">
+        <p>Find<br><br> Find your next game! <br><br><br><i class="fas fa-search"></i></p>
+      </div>
+
+      <div class="card-home">
+        <p>Filter<br> <br>Filter your search to find the perfect game for you! <br><i class="fas fa-filter"></i></p>
+      </div>
+
+      <%= link_to user_path(@user), class: "click-home" do %>
+      <div class="card-home">
+        <p>Play<br><br>Choose the next best game to play!<br><br><i class="fas fa-gamepad"></i></p>
+      </div>
+      <% end %>
+
+    </div>
   </div>
 </div>
 <%= content_for(:footer_class, "footer-home") %>
