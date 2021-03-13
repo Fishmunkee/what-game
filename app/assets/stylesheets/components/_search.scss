@@ -23,11 +23,13 @@
 .btn-outline{
   color:$lgreen;
   border-color:$lgreen;
+
 }
 
 .btn-outline:hover{
   color:$white;
   border-color: $white;
+  transition: 0.5s;
 }
 
 .tag-selector + label {
