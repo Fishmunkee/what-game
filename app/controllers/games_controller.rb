@@ -14,8 +14,19 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
 
   def search
     query = params[:q]
+    genre_ids = params[:genre_ids]
+    platform_ids = params[:platform_ids]
+
     @games = Game.where("title ILIKE ?", "%#{query}%")
+
+    if genre_ids != nil
+      @games = @games.where_exists(:genres, id: genre_ids.split(','))
+    end
+    if platform_ids != nil
+      @games = @games.where_exists(:platforms, id: platform_ids.split(','))
+    end
   end
+
 
   def random
     @game = Game.find(rand(1..Game.count))
@@ -25,11 +36,12 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
 
   def recommendation(game)
     @games = Game.where_exists(:genres, id: game.genres.ids)
-    @games = Game.where_exists(:platforms, id: game.platforms.ids)
+    @games = @games.where_exists(:platforms, id: game.platforms.ids)
     @games = @games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
     @games = @games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
   end
 
   # private
+
 
 end

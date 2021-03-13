@@ -8,15 +8,20 @@
           <h1><%= game.title %></h1>
         </div>
         <div class="card-info-box">
-        <!--   <p><%= game.genres.first %></p>
-          <p><%= game.platforms.first %></p> -->
-          <p>PS5, PS4</p>
-          <p>Action, RPG</p>
+          <p>
+          <% game.genres.each do |genre| %>
+            <%= genre.name %>
+          <% end %>
+        </p>
+        <p>
+          <% game.platforms.each do |platform| %>
+            <%= platform.name %>
+          <% end %>
+        </p>
         </div>
             <!-- <p><%= game.description %></p> -->
         <div class="metacritic">
-          <p>85</p>
-          <!-- <h2><%= game.metacritic %></h2> -->
+          <p><%= game.metacritic.to_f.round %></p>
         </div>
       </div>
       <% end %>
