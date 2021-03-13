@@ -1,3 +1,42 @@
+.cards-home{
+  display: flex;
+  align-content: flex-end;
+  margin-top: 90px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 50px;
+  padding: 10px;
+  padding-top:50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin:10px;
+    p{
+  font-size: 16px !important;
+  text-shadow: 4px 4px #000000;
+  }
+}
+
+.card-home{
+  padding:10px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #eeeeee;
+}
+
+.click-home:hover{
+  text-decoration: none;
+  .card-home{
+    border-color:blue;
+  }
+}
+
+
+.fas{
+  padding-top:30px;
+  margin-top:20px;
+  font-size: 70px;
+}
 
 .container-search {
   margin-top: 68px;

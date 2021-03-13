@@ -13,6 +13,7 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
   end
 
   def search
+    @user = current_user
     query = params[:q]
     genre_ids = params[:genre_ids]
     platform_ids = params[:platform_ids]
