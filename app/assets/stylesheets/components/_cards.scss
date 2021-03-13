@@ -19,15 +19,22 @@
 
 .card-home{
   padding:10px;
-  color: white;
+  color: $white;
+  border:2px solid;
   border-radius: 10px;
-  border: 2px solid #eeeeee;
+  border-color: rgba( 50, 50, 50, 0.6);
+  background-color: rgba(50,50,50,0.3);
+  width: 325px;
 }
 
 .click-home:hover{
   text-decoration: none;
+
   .card-home{
-    border-color:$purple;
+    border-color:$white;
+  }
+  .fas{
+    color:$white;
   }
 }
 
@@ -36,6 +43,7 @@
   padding-top:30px;
   margin-top:20px;
   font-size: 70px;
+  color: $lgreen;
 }
 
 .container-search {
@@ -59,13 +67,13 @@
                        rgba(0, 0, 0, 0.3)), image-url("God_of_War.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  color: white;
+  color: $white;
   display: flex;
   border-radius: 10px;
   height: 400px;
   width: 300px;
   padding: .5rem;
-  border: 2px solid #eeeeee;
+  border: 2px solid $white;
 }
 
 .card-title {

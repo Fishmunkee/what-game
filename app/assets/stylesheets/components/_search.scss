@@ -20,6 +20,16 @@
   transform: scale(0);
 }
 
+.btn-outline{
+  color:$lgreen;
+  border-color:$lgreen;
+}
+
+.btn-outline:hover{
+  color:$white;
+  border-color: $white;
+}
+
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
