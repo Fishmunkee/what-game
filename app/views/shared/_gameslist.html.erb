@@ -2,8 +2,9 @@
   <div class= "cards"> -->
   <div class="cards">
     <% @games.each do |game| %>
+    <% url = game.medium.where(media_type: "cover").first.url %>
     <%= link_to game_path(game) do %>
-      <div class="card">
+      <div class="card game-card" style='background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("https://images.igdb.com/igdb/image/upload/t_cover_big/<%= url %>.jpg");'>
         <div class="card-title">
           <h1><%= game.title %></h1>
         </div>
@@ -27,4 +28,3 @@
       <% end %>
     <% end %>
   </div>
-

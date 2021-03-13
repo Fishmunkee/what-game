@@ -3,28 +3,25 @@
     <h1><%= @game.title %></h1>
       <% @game.medium.where("media_type = 'cover'").take(1).each do |media| %>
       <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
+      <p>Genres: <%= @game.genres&.pluck(:name).to_sentence %></p>
+      <p>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></p>
+      <p>Rating: <%= @game.metacritic.to_i.round %></p>
    <% end %>
-
-  </div>
-
-  <div>
-    <p><%= @game.description %></p>
-  </div>
-
-  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+  
+  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
     <%= f.hidden_field :game_id, value: @game.id %>
-    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.wishlist %>
-      <%= f.hidden_field :wishlist, value: "0" %>
-      <%= f.submit "Wishlist", class: "btn btn-success" %> 
+    <% if @user_game.completed %>
+      <%= f.hidden_field :completed, value: "0" %>
+      <%= f.submit "Completed", class: "btn btn-success" %> 
     <% else %>
-      <%= f.hidden_field :wishlist, value: "1" %>
-      <%= f.submit "Wishlist", class: "btn btn-secondary" %> 
+      <%= f.hidden_field :completed, value: "1" %>
+      <%= f.submit "Completed", class: "btn btn-secondary" %> 
     <% end %>
   <% end %>
 
-  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
     <%= f.hidden_field :game_id, value: @game.id %>
-    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.owned %>
+    <% if @user_game.owned %>
       <%= f.hidden_field :owned, value: "0" %>
       <%= f.submit "Owned", class: "btn btn-success" %> 
     <% else %>
@@ -33,28 +30,34 @@
     <% end %>
   <% end %>
 
-  <%= simple_form_for @user_game, url: setstatus_user_games_path do |f| %>
+  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
     <%= f.hidden_field :game_id, value: @game.id %>
-    <% if UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first&.completed %>
-      <%= f.hidden_field :completed, value: "0" %>
-      <%= f.submit "Completed", class: "btn btn-success" %> 
+    <% if @user_game.wishlist %>
+      <%= f.hidden_field :wishlist, value: "0" %>
+      <%= f.submit "Wishlist", class: "btn btn-success" %> 
     <% else %>
-      <%= f.hidden_field :completed, value: "1" %>
-      <%= f.submit "Completed", class: "btn btn-secondary" %> 
+      <%= f.hidden_field :wishlist, value: "1" %>
+      <%= f.submit "Wishlist", class: "btn btn-secondary" %> 
     <% end %>
   <% end %>
-  
-Screenshots
-  <div>
-    <% @game.medium.where("media_type = 'screenshot'").each do |media| %>
-      <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
-    <% end %>
   </div>
 
-Videos
   <div>
-    <% @game.medium.where("media_type = 'video'").each do |media| %>
-      <%=   %>
-    <% end %>
+    <p>Description: <%= @game.description %></p>
+  </div>
+  <div>
+Screenshots
+    <div>
+      <% @game.medium.where("media_type = 'screenshot'").each do |media| %>
+        <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
+      <% end %>
+    </div>
+
+Videos
+    <div>
+      <% @game.medium.where("media_type = 'video'").each do |media| %>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= media.url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% end %>
+    </div>
   </div>
 </div>
