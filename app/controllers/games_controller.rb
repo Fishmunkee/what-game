@@ -7,12 +7,11 @@ before_action :user
   end
 
   def show
-
     game_id = params[:id]
     @game = Game.find(game_id)
     @reviews = Review.where("game_id = ?", game_id)
     @recommendations = recommendation(@game)
-    @user_game = UserGame.new
+    @user_game = UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first || UserGame.new
   end
 
   def search
