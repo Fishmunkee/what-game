@@ -7,7 +7,6 @@ before_action :user
   end
 
   def show
-
     game_id = params[:id]
     @game = Game.find(game_id)
     @reviews = Review.where("game_id = ?", game_id)
@@ -33,7 +32,7 @@ before_action :user
 
 
   def random
-    @game = Game.find(rand(1..Game.count))
+    redirect_to :action => "show", :id => Game.pluck(:id).sample
   end
 
   private

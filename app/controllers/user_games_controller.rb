@@ -1,4 +1,5 @@
 class UserGamesController < ApplicationController
+  before_action :user
 
   def setstatus
     usergame = UserGame.where("user_id = ? AND game_id = ?", current_user, params["user_game"]["game_id"])
@@ -18,24 +19,36 @@ class UserGamesController < ApplicationController
 
     genres = Hash.new(0)
     usergames.each do |usergame|
-      usergame.genres.each do |genre|
+      usergame.game.genres.each do |genre|
         genres[genre.id] += 1
       end
     end
 
     popular_genres = Hash[genres.sort_by{|k,v| -v}]
 
-    @games = Genre.find(popular_genres.keys[0]).games.order('metacritic desc').take(5)
+    genre1games = Genre.find(popular_genres.keys[0]).games.order('metacritic desc')
+    genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+    genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+
+    @games = genre1games.take(20)
+
     if popular_genres.size > 1
-      @games += Genre.find(popular_genres.keys[1]).games.order('metacritic desc').take(5)
+      genre2games = Genre.find(popular_genres.keys[1]).games.order('metacritic desc')
+      genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+      genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+
+      @games += genre2games.take(20)
 
       if popular_genres.size > 2
-        @games += Genre.find(popular_genres.keys[2]).games.order('metacritic desc').take(5)
+        genre3games = Genre.find(popular_genres.keys[2]).games.order('metacritic desc')
+        genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+        genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+
+        @games += genre3games.take(20)
       end
     end
 
-    @games = @games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
-    @games = @games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+    @games = @games.uniq.shuffle.take(20)
 
   end
 
@@ -45,4 +58,8 @@ class UserGamesController < ApplicationController
     params.require(:user_game).permit(:game_id, :owned, :completed, :wishlist, :recommend)
   end
 
+
+  def user
+    @user = current_user
+  end
 end

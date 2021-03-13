@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :user_games, only: [:index] do
     collection do
       post 'setstatus'
+      get 'recommendations'
     end
   end
 
