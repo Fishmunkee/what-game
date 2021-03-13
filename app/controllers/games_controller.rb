@@ -1,11 +1,13 @@
 class GamesController < ApplicationController
 skip_before_action :authenticate_user!, only: [ :search, :index ]
+before_action :user
 
   def index
     @games = Game.all
   end
 
   def show
+
     game_id = params[:id]
     @game = Game.find(game_id)
     @reviews = Review.where("game_id = ?", game_id)
@@ -13,7 +15,7 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
   end
 
   def search
-    @user = current_user
+
     query = params[:q]
     genre_ids = params[:genre_ids]
     platform_ids = params[:platform_ids]
@@ -42,7 +44,9 @@ skip_before_action :authenticate_user!, only: [ :search, :index ]
     @games = @games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
   end
 
-  # private
+  def user
+    @user = current_user
+  end
 
 
 end
