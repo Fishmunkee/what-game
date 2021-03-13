@@ -1,15 +1,1 @@
-<div class="container-index">
-  <div class= "cards">
-    <% @games.each do |game| %>
-      <%= link_to game_path(game) do %>
-        <div class="card">
-          <h3>Name: <%= game.name %></h3>
-          <% end %>
-        </h3>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-
+<%= render 'shared/gameslist' %>
