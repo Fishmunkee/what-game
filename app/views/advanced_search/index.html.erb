@@ -1,9 +1,15 @@
-<% @genres.each do |genre| %>
-  <a href=#><%= genre.name %></a>
-<% end %>
+<%#= simple_form_for :games_genres, url: search_games_path, method: :get do |f| %>
+  <%#=f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_blank: false, item_label_class: 'filter-genres'%>
+  <%#= f.button :submit, class: 'text-white' %>
+<%# end %>
 
-<hr>
+<%#= simple_form_for :games_platforms, url: search_games_path, method: :get do |f| %>
+  <%#=f.collection_check_boxes :platform_ids, Platform.all, :id, :name, include_blank: false, item_label_class: 'filter-platforms'%>
+  <%#= f.button :submit, class: 'text-white' %>
+<%# end %>
 
-<% @platforms.each do |platform| %>
-  <a href=#><%= platform.name %></a>
+<%= simple_form_for :games, url: search_games_path, method: :get do |f| %>
+  <%=f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_blank: false, item_label_class: 'filter-genres'%>
+  <%=f.collection_check_boxes :platform_ids, Platform.all, :id, :name, include_blank: false, item_label_class: 'filter-platforms'%>
+  <%= f.button :submit, "Advanced Search", class: 'btn btn-outline' %>
 <% end %>
