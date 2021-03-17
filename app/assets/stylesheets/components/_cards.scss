@@ -61,7 +61,6 @@
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
   grid-gap: 50px;
-  padding: 10px;
   margin: 30px;
 
 }
@@ -69,19 +68,13 @@
 .card {
   position: relative;
   display: flex;
-
-  // box-shadow: 0px 0px 4px violet;
-  box-shadow: 0 -1px 0 $dark, 0 1px 0 $lgreen;
   display: flex;
-  border-radius: 10px;
-  height: 400px;
+  height: 380px;
   width: 300px;
   padding: .5rem;
-
-  border: 2px solid $white;
-
-  // border: 2px solid #eeeeee;
-  color: white;
+  border: 1px outset $light-gray;
+  border-radius: 5px;
+  color: $light-gray;
 }
 
 .game-card {
@@ -95,7 +88,7 @@
   top: 260px;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-shadow: 1px 1px $dark;
+  text-shadow: 0px 0px 5px $black;
 
   h1 {
     font-size: 15px;
@@ -108,25 +101,50 @@
 .card-info-box {
   position: absolute;
   display: flex;
-  // border: 1px solid lightgrey;
-  // border-radius: 5px;
+  border-radius: 5px;
   top: 315px;
   width: 275px;
   height: 50px;
   justify-content: space-evenly;
-  font-size: 10px;
+  font-size: 15px;
   text-shadow: 1px 1px $dark;
-  // box-shadow: 0px 0px 5px grey;
-  // background-color: rgba(50,50,50,0.1);
+  // box-shadow: 0px 0px 6px black;
+  border: 1px inset white;
+  background-color: rgba(20,20,20,0.5);
+  font-family: $sunflower;
 }
 
 .metacritic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  background: lightgreen;
+  background: rgba(40, 40, 40, 0.8);
   text-align: center;
-  vertical-align: middle;
   width: 50px;
-  // border-radius: 5px 20px 5px;
+  height: 50px;
   border-radius: 50%;
-  border: 3px solid lightgreen;
+  border: 3px outset violet;
+  font-size: 23px;
+  // text-shadow: 1px 1px $dark;
+
+  p {
+    font-family: $sunflower;
+    margin: 0;
+  }
+}
+
+#wishlist {
+  position: relative;
+  left: 200px;
+}
+
+#owned {
+  position: relative;
+  left: 210px;
+}
+
+#completed {
+  position: relative;
+  left: 220px;
 }
