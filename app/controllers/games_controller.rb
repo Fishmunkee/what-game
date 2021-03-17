@@ -15,18 +15,23 @@ before_action :user
   end
 
   def search
-
     query = params[:q]
-    genre_ids = params[:genre_ids]
-    platform_ids = params[:platform_ids]
+    genre_ids = params.dig(:games, :genre_ids)
+    platform_ids = params.dig(:games, :platform_ids)
+    @games = Game.all
 
-    @games = Game.where("title ILIKE ?", "%#{query}%")
+    if query
+      @games = Game.where("title ILIKE ?", "%#{query}%")
+    end
 
     if genre_ids != nil
-      @games = @games.where_exists(:genres, id: genre_ids.split(','))
+      g_ids = genre_ids[1..-1].map { |genre_id| genre_id.to_i }
+      @games = @games.where_exists(:genres, id: g_ids)
     end
+
     if platform_ids != nil
-      @games = @games.where_exists(:platforms, id: platform_ids.split(','))
+      p_ids = platform_ids[1..-1].map { |platform_id| platform_id.to_i }
+      @games = @games.where_exists(:platforms, id: p_ids)
     end
   end
 

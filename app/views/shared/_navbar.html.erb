@@ -3,6 +3,7 @@
     <%= image_tag "logo.png" %>
   <% end %>
 
+<% if controller_name != 'advanced_search'  %>
     <%= form_tag search_games_path, class: "form d-flex", method: :get do %>
       <%= text_field_tag :q,
       params[:q],
@@ -12,31 +13,8 @@
       <%= submit_tag "Search", class: "btn btn-outline my-2 my-sm-0" %>
     <% end %>
 
-    <!-- <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+<% end %>
 
-
-        <!-- <div class="dropdown">
-          <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advanced Filter</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
-
-              <%#=simple_form_for :games, url: games_path, method: :get do |f|  %>
-              <%#= f.input :platforms, collection: Game::PLATFORMS,
-            as: :check_boxes,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'} %>
-
-              <%#= f.input :genres,
-                  as: :check_boxes,
-                  input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item' %>
-                  <%# end %>
-       <!--      </div>
-        </div> -->
-   <!--  </form> -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
