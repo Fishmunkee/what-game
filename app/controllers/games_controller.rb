@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-skip_before_action :authenticate_user!, only: [ :search, :index ]
+skip_before_action :authenticate_user!, only: [ :search, :index, :show ]
 before_action :user
 
   def index
@@ -10,7 +10,7 @@ before_action :user
     game_id = params[:id]
     @game = Game.find(game_id)
     @reviews = Review.where("game_id = ?", game_id)
-    @recommendations = recommendation(@game)
+    @recommendations = recommendation(@game) if current_user
     @user_game = UserGame.where("user_id = ? AND game_id = ?", current_user, @game.id)&.first || UserGame.new
   end
 

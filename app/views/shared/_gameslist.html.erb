@@ -29,12 +29,28 @@
           <% else %>
             <p class="metacritic-hi"><%= game.metacritic.to_f.round %></p>
           <% end %>
-
-
         </div>
+
+      <% @user_game = UserGame.where("user_id = ? AND game_id = ?", current_user, game.id)&.first || UserGame.new %>
+
+
+        <% if user_signed_in? %>
+          <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+            <%= f.hidden_field :game_id, value: game.id %>
+            <% if @user_game.completed %>
+              <%= f.hidden_field :completed, value: "0" %>
+              <%= image_submit_tag("trophy_completed.svg", class: "icons-small") %>
+            <% else %>
+              <%= f.hidden_field :completed, value: "1" %>
+              <%= image_submit_tag("trophy.svg", class: "icons-small") %>
+          <% end %>
+          <% end %>
+        <% end %>
+
+
 
 
       </div>
-      <% end %>
+    <% end %>
     <% end %>
   </div>
