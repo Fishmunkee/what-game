@@ -1,63 +1,73 @@
-<div class="text-colour-white">
-  <div>
-    <h1><%= @game.title %></h1>
-      <% @game.medium.where("media_type = 'cover'").take(1).each do |media| %>
-      <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
+<div class="text-colour-white container">
+  <div class="name-box my-5">
+    <% @game.medium.where("media_type = 'cover'").take(1).each do |media| %>
+    <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
+    <div class="d-flex flex-column justify-content-around ml-5">
+      <h3><%= @game.title %></h3>
       <p>Genres: <%= @game.genres&.pluck(:name).to_sentence %></p>
       <p>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></p>
       <p>Rating: <%= @game.metacritic.to_i.round %></p>
+    </div>
    <% end %>
   
-  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
-    <%= f.hidden_field :game_id, value: @game.id %>
-    <% if @user_game.completed %>
-      <%= f.hidden_field :completed, value: "0" %>
-      <%= f.submit "Completed", class: "btn btn-success" %> 
-    <% else %>
-      <%= f.hidden_field :completed, value: "1" %>
-      <%= f.submit "Completed", class: "btn btn-secondary" %> 
+  <div class="d-flex flex-column justify-content-around ml-5">
+    <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+      <%= f.hidden_field :game_id, value: @game.id %>
+      <% if @user_game.completed %>
+        <%= f.hidden_field :completed, value: "0" %>
+        <%= image_submit_tag("trophy_completed.svg", class: "icons") %>
+      <% else %>
+        <%= f.hidden_field :completed, value: "1" %>
+        <%= image_submit_tag("trophy.svg", class: "icons") %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
-    <%= f.hidden_field :game_id, value: @game.id %>
-    <% if @user_game.owned %>
-      <%= f.hidden_field :owned, value: "0" %>
-      <%= f.submit "Owned", class: "btn btn-success" %> 
-    <% else %>
-      <%= f.hidden_field :owned, value: "1" %>
-      <%= f.submit "Owned", class: "btn btn-secondary" %>
+    <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+      <%= f.hidden_field :game_id, value: @game.id %>
+      <% if @user_game.owned %>
+        <%= f.hidden_field :owned, value: "0" %>
+        <%= image_submit_tag("treasure_completed.svg", class: "icons") %> 
+      <% else %>
+        <%= f.hidden_field :owned, value: "1" %>
+        <%= image_submit_tag("treasure.svg", class: "icons") %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
-    <%= f.hidden_field :game_id, value: @game.id %>
-    <% if @user_game.wishlist %>
-      <%= f.hidden_field :wishlist, value: "0" %>
-      <%= f.submit "Wishlist", class: "btn btn-success" %> 
-    <% else %>
-      <%= f.hidden_field :wishlist, value: "1" %>
-      <%= f.submit "Wishlist", class: "btn btn-secondary" %> 
+    <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+      <%= f.hidden_field :game_id, value: @game.id %>
+      <% if @user_game.wishlist %>
+        <%= f.hidden_field :wishlist, value: "0" %>
+        <%= image_submit_tag("heart_completed.svg", class: "icons") %> 
+      <% else %>
+        <%= f.hidden_field :wishlist, value: "1" %>
+        <%= image_submit_tag("heart.svg", class: "icons") %> 
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
   </div>
 
   <div>
     <p>Description: <%= @game.description %></p>
   </div>
   <div>
-Screenshots
-    <div>
-      <% @game.medium.where("media_type = 'screenshot'").each do |media| %>
-        <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
+
+<h5 class="mt-3">Screenshots</h5>
+    <div class='cards-media'>
+      <% @game.medium.where("media_type = 'screenshot'").take(4).each do |media| %>
+        <div class="card-screenshot">
+          <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
+        </div>
       <% end %>
     </div>
 
-Videos
-    <div>
-      <% @game.medium.where("media_type = 'video'").each do |media| %>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= media.url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h5 class="mt-3">Videos</h5>
+    <div class="cards-media">
+      <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
+        <div class="card-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= media.url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
+
