@@ -24,14 +24,12 @@ before_action :user
       @games = Game.where("title ILIKE ?", "%#{query}%")
     end
 
-    if genre_ids.length > 1
-      g_ids = genre_ids[1..-1].map { |genre_id| genre_id.to_i }
-      @games = @games.where_exists(:genres, id: g_ids)
+    if genre_ids != nil
+      @games = @games.where_exists(:genres, id: genre_ids.split(','))
     end
 
-    if platform_ids.length > 1
-      p_ids = platform_ids[1..-1].map { |platform_id| platform_id.to_i }
-      @games = @games.where_exists(:platforms, id: p_ids)
+    if platform_ids != nil
+      @games = @games.where_exists(:platforms, id: platform_ids.split(','))
     end
   end
 
