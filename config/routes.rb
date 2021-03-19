@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :games, only: [:show, :index] do
     collection do
       get 'search'
+      get 'advancedsearch'
       get 'random'
     end
   end
