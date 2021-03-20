@@ -3,33 +3,78 @@
     <h1>My Profile</h1>
     <% if current_user.avatar.attached? %>
       <%= cl_image_tag @user.avatar.key, height: 300, width: 300, crop: :fill %>
+    <% else %>
+      <%= image_tag "no-user-avatar.png", height: 300, width: 300, crop: :fill %>
     <% end %>
-    <h3>Edit</h3>
+    <h3 class="text-colour-white mt-3"><%= link_to "Edit", edit_user_registration_path %></h3>
   </div>
 </div>
-<div class="games-list text-colour-white">
-  <div> Completed
-    <% @user.user_games.each do |user_game| %>
+<div class="games-list">
+<div id="accordion">
+  <div class="">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Completed
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body cards">
+        <% @user.user_games.each do |user_game| %>
         <% if user_game.completed %>
-            <p><%= user_game.game.title %></p>
+          <%= render "card", game: user_game.game %>
         <% end %>
     <% end %> 
+      </div>
+    </div>
   </div>
-
-  <div>Owned
-    <% @user.user_games.each do |user_game| %>
+  <div class="">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Owned
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body cards">
+        <% @user.user_games.each do |user_game| %>
         <% if user_game.owned %>
-            <p><%= user_game.game.title %></p>
+          <%= render "card", game: user_game.game %>
         <% end %>
     <% end %>
+      </div>
+    </div>
   </div>
-
-  <div>Wishlist
+  <div class="">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Wishlist
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body cards">
     <% @user.user_games.each do |user_game| %>
         <% if user_game.wishlist %>
-            <p><%= user_game.game.title %></p>
+            <%= render "card", game: user_game.game %>
         <% end %>
     <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
 </div>
+</div>
+

@@ -15,6 +15,7 @@ body {
   height: 50px;
 }
 
+
 .search-card-icons {
   display: flex;
   justify-content: end;
@@ -46,5 +47,10 @@ body {
 .heart-icons {
   width: 20px;
   height: 20px;
+}
+
+
+.text-description {
+  font-family: $sunflower;
 }
 
