@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-skip_before_action :authenticate_user!, only: [ :search, :index, :show ]
+skip_before_action :authenticate_user!, only: [ :search, :index, :show, :advancedsearch, :random ]
 before_action :user
 
   def index
