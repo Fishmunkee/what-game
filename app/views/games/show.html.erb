@@ -57,8 +57,8 @@
   </div>
   <div>
 
-<h5 class="mt-5 text-description">Screenshots</h5>
-    <div class='cards-media'>
+  <h5 class="mt-5 text-description">Screenshots</h5>
+    <div class='cards-media mb-5'>
       <% @game.medium.where("media_type = 'screenshot'").take(4).each do |media| %>
         <div class="card-screenshot">
           <%= image_tag "https://images.igdb.com/igdb/image/upload/t_screenshot_med/#{media.url}.jpg" %>
@@ -66,14 +66,16 @@
       <% end %>
     </div>
 
-<h5 class="mt-5 text-description">Videos</h5>
-    <div class="cards-media">
-      <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
-        <div class="card-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= media.url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      <% end %>
-    </div>
+  <% if @game.medium.where("media_type = 'video'").exists? %>
+    <h5 class="mt-5 text-description">Videos</h5>
+      <div class="cards-media mb-5">
+        <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
+          <div class="card-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= media.url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
