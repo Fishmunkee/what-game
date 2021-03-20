@@ -33,11 +33,15 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.games_ {
+.games_q {
   label.string.required{
   visibility: hidden;
   }
 }
+
+// .string.required {
+
+// }
 
 .form-check-input + label {
   curser: pointer;
