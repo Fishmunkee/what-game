@@ -47,11 +47,11 @@
   </div>
 
   <div>
-    <p>Description: <%= @game.description %></p>
+    <p class="text-description">Description: <%= @game.description %></p>
   </div>
   <div>
 
-<h5 class="mt-3">Screenshots</h5>
+<h5 class="mt-5 text-description">Screenshots</h5>
     <div class='cards-media'>
       <% @game.medium.where("media_type = 'screenshot'").take(4).each do |media| %>
         <div class="card-screenshot">
@@ -60,7 +60,7 @@
       <% end %>
     </div>
 
-<h5 class="mt-3">Videos</h5>
+<h5 class="mt-5 text-description">Videos</h5>
     <div class="cards-media">
       <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
         <div class="card-video">
