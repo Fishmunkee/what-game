@@ -9,16 +9,17 @@
           <h1><%= game.title %></h1>
         </div>
         <div class="card-info-box">
-          <p>
-          <% game.genres.each do |genre| %>
-            <%= genre.name %>
-          <% end %>
-        </p>
-        <p>
-          <% game.platforms.each do |platform| %>
-            <%= platform.name %>
-          <% end %>
-        </p>
+          <div class="info-box-left">
+            <% game.genres.take(3).each do |genre| %>
+              <p><%= genre.name %></p>
+            <% end %>
+          </div>
+          <div class="info-box-right">
+            <% game.platforms.take(3).each do |platform| %>
+              <p><%= platform.name %></p>
+            <% end %>
+          </div>
+
         </div>
             <!-- <p><%= game.description %></p> -->
         <div class="metacritic">
@@ -33,20 +34,42 @@
 
       <% @user_game = UserGame.where("user_id = ? AND game_id = ?", current_user, game.id)&.first || UserGame.new %>
 
-
         <% if user_signed_in? %>
-          <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
-            <%= f.hidden_field :game_id, value: game.id %>
-            <% if @user_game.completed %>
-              <%= f.hidden_field :completed, value: "0" %>
-              <%= image_submit_tag("trophy_completed.svg", class: "icons-small") %>
-            <% else %>
-              <%= f.hidden_field :completed, value: "1" %>
-              <%= image_submit_tag("trophy.svg", class: "icons-small") %>
-          <% end %>
-          <% end %>
-        <% end %>
+          <div class="search-card-icons">
+            <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+              <%= f.hidden_field :game_id, value: game.id %>
+              <% if @user_game.completed %>
+                <%= f.hidden_field :completed, value: "0" %>
+                <%= image_submit_tag("trophy_completed.svg", class: "trophy-icons") %>
+              <% else %>
+                <%= f.hidden_field :completed, value: "1" %>
+                <%= image_submit_tag("trophy.svg", class: "trophy-icons") %>
+              <% end %>
+            <% end %>
 
+            <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+              <%= f.hidden_field :game_id, value: game.id %>
+              <% if @user_game.owned %>
+                <%= f.hidden_field :completed, value: "0" %>
+                <%= image_submit_tag("treasure_completed.svg", class: "treasure-icons") %>
+              <% else %>
+                <%= f.hidden_field :completed, value: "1" %>
+                <%= image_submit_tag("treasure.svg", class: "treasure-icons") %>
+              <% end %>
+            <% end %>
+
+            <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
+              <%= f.hidden_field :game_id, value: game.id %>
+              <% if @user_game.wishlist %>
+                <%= f.hidden_field :completed, value: "0" %>
+                <%= image_submit_tag("heart_completed.svg", class: "heart-icons") %>
+              <% else %>
+                <%= f.hidden_field :completed, value: "1" %>
+                <%= image_submit_tag("heart.svg", class: "heart-icons") %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
 
 
 
