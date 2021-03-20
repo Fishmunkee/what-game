@@ -3,37 +3,8 @@
   <div class="cards">
     <% @games.each do |game| %>
     <% url = game.medium.where(media_type: "cover").first&.url %>
-    <%= link_to game_path(game) do %>
       <div class="card game-card" style='background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("https://images.igdb.com/igdb/image/upload/t_cover_big_2x/<%= url %>.jpg");'>
-        <div class="card-title">
-          <h1><%= game.title %></h1>
-        </div>
-        <div class="card-info-box">
-          <div class="info-box-left">
-            <% game.genres.take(3).each do |genre| %>
-              <p><%= genre.name %></p>
-            <% end %>
-          </div>
-          <div class="info-box-right">
-            <% game.platforms.take(3).each do |platform| %>
-              <p><%= platform.name %></p>
-            <% end %>
-          </div>
-
-        </div>
-            <!-- <p><%= game.description %></p> -->
-        <div class="metacritic">
-          <% if game.metacritic.to_i <= 50 %>
-            <p class="metacritic-low"><%= game.metacritic.to_f.round %></p>
-          <% elsif game.metacritic.to_i <= 74 %>
-            <p class="metacritic-med"><%= game.metacritic.to_f.round %></p>
-          <% else %>
-            <p class="metacritic-hi"><%= game.metacritic.to_f.round %></p>
-          <% end %>
-        </div>
-
       <% @user_game = UserGame.where("user_id = ? AND game_id = ?", current_user, game.id)&.first || UserGame.new %>
-
         <% if user_signed_in? %>
           <div class="search-card-icons">
             <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
@@ -70,10 +41,40 @@
             <% end %>
           </div>
         <% end %>
+    <%= link_to game_path(game) do %>
+        <div class="card-title">
+          <h1><%= game.title %></h1>
+        </div>
+        <div class="card-info-box">
+          <div class="info-box-left">
+            <% game.genres.take(3).each do |genre| %>
+              <p><%= genre.name %></p>
+            <% end %>
+          </div>
+          <div class="info-box-right">
+            <% game.platforms.take(3).each do |platform| %>
+              <p><%= platform.name %></p>
+            <% end %>
+          </div>
+
+        </div>
+            <!-- <p><%= game.description %></p> -->
+        <div class="metacritic">
+          <% if game.metacritic.to_i <= 50 %>
+            <p class="metacritic-low"><%= game.metacritic.to_f.round %></p>
+          <% elsif game.metacritic.to_i <= 74 %>
+            <p class="metacritic-med"><%= game.metacritic.to_f.round %></p>
+          <% else %>
+            <p class="metacritic-hi"><%= game.metacritic.to_f.round %></p>
+          <% end %>
+        </div>
+        <% end %>
+
+
 
 
 
       </div>
-    <% end %>
+
     <% end %>
   </div>
