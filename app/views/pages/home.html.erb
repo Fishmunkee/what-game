@@ -1,8 +1,19 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
+
+
 <div class="banner">
+
   <div class="banner-content text-center">
-    <h1>What Game? </h1>
+    <%= form_tag search_games_path, class: "form d-flex", method: :get do %>
+      <%= text_field_tag :q,
+      params[:q],
+      class: "form-control-search mr-sm-2",
+      placeholder: "God of War"
+      %>
+      <%= submit_tag "Search", class: "btn btn-outline my-2 my-sm-0" %>
+    <% end %>
+
     <div class="cards-home">
 
       <%= link_to random_games_path, class: "click-home", method: :get do %>

@@ -31,5 +31,13 @@
 
   .btn {
     padding: 15px 50px;
+    height: calc(1.5em + 0.75rem + 2px);
   }
+}
+
+.banner-content{
+  margin-top:24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

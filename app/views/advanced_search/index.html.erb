@@ -1,14 +1,12 @@
 <div class="container">
   <%= simple_form_for :games, url: search_games_path, method: :get do |f| %>
     <h2 class="genre-platform-text mb-3"> Advanced Search </h2>
-    <%= f.input :q, input_html: { value: params[:q] }, class: "form-control d-flex mr-sm-2", placeholder: "Keyword" %>
-    <!-- <div class="d-flex"> -->
+    <%= f.input :q, input_html: { value: params[:q] }, class: "form-control d-flex mr-sm-2", placeholder: "Keyword", input_html: { class: "filter-search" } %>
       <hr>
       <h3 class="genre-platform-text mb-3"> Select your Genre(s)! </h3>
       <%=f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_blank: false, input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item'%>
       <h3 class="genre-platform-text mb-3"> Select your Platform(s)! </h3>
       <%=f.collection_check_boxes :platform_ids, Platform.all, :id, :name, include_blank: false, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}, item_label_class: 'filter-platforms'%>
-    <!-- </div> -->
       <div class="center-search mb-5">
         <%= f.button :submit, "Search",  id:'btn-advanced', class: 'btn btn-outline d-flex' %>
       </div>
