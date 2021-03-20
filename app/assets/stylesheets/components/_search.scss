@@ -4,10 +4,12 @@
 }
 
 .form-control-search{
-  width: 600px;
+  width:600px;
+  padding-left:12px;
+  height: calc(1.5em + 0.75rem + 2px);
 }
 
-.form-control{
+.filter-search{
   position: absolute;
   margin-bottom: 12px;
   left: 50%;

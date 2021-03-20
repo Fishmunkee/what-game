@@ -26,7 +26,11 @@
 
   <body>
     <div class="d-flex flex-column min-vh-100">
-      <%= render 'shared/navbar', games: @games_platforms %>
+      <% if controller_name == "pages" %>
+        <%= render 'shared/navbarhome'  %>
+      <% else %>
+        <%= render 'shared/navbar'  %>
+      <% end %>
       <%= render 'shared/flashes' %>
       <div class="flex-grow-1">
         <%= yield %>
