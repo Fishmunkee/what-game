@@ -11,28 +11,32 @@
       class: "form-control-search mr-sm-2",
       placeholder: "God of War"
       %>
-      <%= submit_tag "Search", class: "btn btn-outline my-2 my-sm-0" %>
+      <%= submit_tag "Search", class: "btn btn-outline my-2 my-sm-0 d-flex" %>
+        <%= link_to "Filter", advanced_search_index_path, class: "btn btn-outline my-2 my-sm-0 d-flex" %>
+      <%= link_to random_games_path do %>
+        <%=  image_tag ("dice.png"), class: "random-dice" %>
+      <% end %>
     <% end %>
 
     <div class="cards-home">
 
-      <%= link_to random_games_path, class: "click-home", method: :get do %>
+      <%#= link_to random_games_path, class: "click-home", method: :get do %>
         <div class="card-home">
-          <h3>Find</h3> <br><p>Find your next game! <br><br><i class="fas fa-search"></i></p>
+          <h3>Find</h3><p>Find your next game! <br><br><i class="fas fa-search"></i></p>
         </div>
-      <% end %>
+      <%# end %>
 
-      <%= link_to advanced_search_index_path, class: "click-home" do  %>
+      <%#= link_to advanced_search_index_path, class: "click-home" do  %>
         <div class="card-home">
-          <h3>Filter</h3><br> <p>Filter your search to find the perfect game for you! <br><i class="fas fa-filter"></i></p>
+          <h3>Filter</h3> <p>Filter your search to find the perfect game for you! <br><i class="fas fa-filter"></i></p>
         </div>
-      <% end %>
+      <%# end %>
 
-      <%= link_to recommendations_user_games_path, class: "click-home" do %>
+      <%#= link_to recommendations_user_games_path, class: "click-home" do %>
         <div class="card-home">
-          <h3>Play</h3> <br><p>Choose the next best game to play!<br><br><i class="fas fa-gamepad"></i></p>
+          <h3>Play</h3><p>Choose the next best game to play!<br><br><i class="fas fa-gamepad"></i></p>
         </div>
-      <% end %>
+      <%# end %>
 
     </div>
   </div>
