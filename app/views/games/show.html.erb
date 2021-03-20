@@ -11,6 +11,7 @@
    <% end %>
   
   <div class="d-flex flex-column justify-content-around ml-5">
+    <% if current_user %>
     <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.completed %>
@@ -21,7 +22,9 @@
         <%= image_submit_tag("trophy.svg", class: "icons") %>
       <% end %>
     <% end %>
+    <% end %>
 
+    <% if current_user %>
     <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.owned %>
@@ -32,7 +35,9 @@
         <%= image_submit_tag("treasure.svg", class: "icons") %>
       <% end %>
     <% end %>
+    <% end %>
 
+    <% if current_user %>
     <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.wishlist %>
@@ -42,6 +47,7 @@
         <%= f.hidden_field :wishlist, value: "1" %>
         <%= image_submit_tag("heart.svg", class: "icons") %> 
       <% end %>
+    <% end %>
     <% end %>
     </div>
   </div>
