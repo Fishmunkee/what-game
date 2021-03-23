@@ -17,9 +17,11 @@
       <% if @user_game.completed %>
         <%= f.hidden_field :completed, value: "0" %>
         <%= image_submit_tag("trophy_completed.svg", class: "icons") %>
+        <p class="text-description"><%= "Completed" %></p>
       <% else %>
         <%= f.hidden_field :completed, value: "1" %>
         <%= image_submit_tag("trophy.svg", class: "icons") %>
+        <p class="text-description"><%= "Completed" %></p> 
       <% end %>
     <% end %>
     <% end %>
@@ -29,10 +31,12 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.owned %>
         <%= f.hidden_field :owned, value: "0" %>
-        <%= image_submit_tag("treasure_completed.svg", class: "icons") %> 
+        <%= image_submit_tag("treasure_completed.svg", class: "icons") %>
+        <p class="text-description"><%= "Owned" %></p> 
       <% else %>
         <%= f.hidden_field :owned, value: "1" %>
         <%= image_submit_tag("treasure.svg", class: "icons") %>
+        <p class="text-description"><%= "Owned" %></p> 
       <% end %>
     <% end %>
     <% end %>
@@ -42,10 +46,12 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.wishlist %>
         <%= f.hidden_field :wishlist, value: "0" %>
-        <%= image_submit_tag("heart_completed.svg", class: "icons") %> 
+        <%= image_submit_tag("heart_completed.svg", class: "icons") %>
+        <p class="text-description"><%= "Wishlist" %></p>  
       <% else %>
         <%= f.hidden_field :wishlist, value: "1" %>
         <%= image_submit_tag("heart.svg", class: "icons") %> 
+        <p class="text-description"><%= "Wishlist" %></p> 
       <% end %>
     <% end %>
     <% end %>
