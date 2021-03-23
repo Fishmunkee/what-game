@@ -77,8 +77,7 @@
   text-align: center;
 }
 
-.genre-platform-text{
-  padding-top:20px;
+.advanced-text{
   color:$white;
   display: flex;
   flex-direction: column;
@@ -86,6 +85,27 @@
   align-items: center;
   text-align: center;
 }
+
+.genre-text{
+  padding-top:60px;
+  color:$white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.platform-text{
+  padding-top:60px;
+  color:$white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 
 .btn{
   display: flex;
@@ -141,20 +161,14 @@
     cursor: pointer;
     box-sizing: border-box;
     width: 300px;
-    height:100px;
+    height:50px;
     font-size: 12px;
     text-align: center;
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 10px 10px;
     border: 1px solid #EAEAEA;
-    border-radius: 4px;
+    border-radius: 50rem;
     background-color: white;
     margin: 20px;
-  }
-  input:checked + label{
-    color: black !important;
-  }
-  p{
-    margin-bottom: 0;
   }
 }
 
@@ -165,6 +179,7 @@
 #games_platform_ids_1:checked + label {
   background-color: gray;
   border-color: gray;
+  color: white;
 }
 
 #games_platform_ids_2 + label {
@@ -174,15 +189,17 @@
 #games_platform_ids_2:checked + label {
   background-color: #2351B2;
   border-color: #2351B2;
+  color: white;
 }
 
 #games_platform_ids_3 + label {
-  color: $lgreen;
+  color: #107C11;
 }
 
 #games_platform_ids_3:checked + label {
-  background-color: $lgreen;
-  border-color: $lgreen;
+  background-color: #107C11;
+  border-color: #107C11;
+  color: black;
 }
 
 #games_platform_ids_4 + label {
@@ -192,6 +209,7 @@
 #games_platform_ids_4:checked + label{
   background-color: #FD1015;
   border-color: #FD1015;
+  color: white;
 }
 
 #games_platform_ids_5 + label{
@@ -201,18 +219,18 @@
 #games_platform_ids_5:checked + label{
   background-color: #2351B2;
   border-color: #2351B2;
+  color: white;
 }
 
 #games_platform_ids_6 + label{
-  color: $lgreen;
+  color: #107C11;
 }
 
 #games_platform_ids_6:checked + label{
-  background-color: $lgreen;
-  border-color: $lgreen;
+  background-color: #107C11;
+  border-color: #107C11;
+  color: black;
 }
-
-
 
 .center-search{
   display: flex;
@@ -234,5 +252,5 @@
     transform: scale(1.1);
     background-color:#5e9400;
   }
-
 }
+// 3px outset white;

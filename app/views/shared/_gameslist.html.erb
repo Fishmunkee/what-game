@@ -1,6 +1,7 @@
 <!-- <div class="container-index">
   <div class= "cards"> -->
   <div class="cards">
+    <% if @games %>
     <% @games.each do |game| %>
     <% url = game.medium.where(media_type: "cover").first&.url %>
       <div class="card game-card" style='background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("https://images.igdb.com/igdb/image/upload/t_cover_big_2x/<%= url %>.jpg");'>
@@ -60,9 +61,9 @@
         </div>
             <!-- <p><%= game.description %></p> -->
         <div class="metacritic">
-          <% if game.metacritic.to_i <= 50 %>
+          <% if game.metacritic.to_f.round <= 50 %>
             <p class="metacritic-low"><%= game.metacritic.to_f.round %></p>
-          <% elsif game.metacritic.to_i <= 74 %>
+          <% elsif game.metacritic.to_f.round <= 74 %>
             <p class="metacritic-med"><%= game.metacritic.to_f.round %></p>
           <% else %>
             <p class="metacritic-hi"><%= game.metacritic.to_f.round %></p>
@@ -76,5 +77,6 @@
 
       </div>
 
+    <% end %>
     <% end %>
   </div>

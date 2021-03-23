@@ -17,38 +17,42 @@ class UserGamesController < ApplicationController
   def recommendations
     usergames = UserGame.where("user_id = ?", current_user)
 
-    genres = Hash.new(0)
-    usergames.each do |usergame|
-      usergame.game.genres.each do |genre|
-        genres[genre.id] += 1
+    if usergames.size > 0
+
+      genres = Hash.new(0)
+      usergames.each do |usergame|
+        usergame.game.genres.each do |genre|
+          genres[genre.id] += 1
+        end
       end
-    end
 
-    popular_genres = Hash[genres.sort_by{|k,v| -v}]
+      popular_genres = Hash[genres.sort_by{|k,v| -v}]
 
-    genre1games = Genre.find(popular_genres.keys[0]).games.order('metacritic desc')
-    genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
-    genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+      genre1games = Genre.find(popular_genres.keys[0]).games.order('metacritic desc')
+      genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+      genre1games = genre1games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
 
-    @games = genre1games.take(20)
+      @games = genre1games.take(20)
 
-    if popular_genres.size > 1
-      genre2games = Genre.find(popular_genres.keys[1]).games.order('metacritic desc')
-      genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
-      genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+      if popular_genres.size > 1
+        genre2games = Genre.find(popular_genres.keys[1]).games.order('metacritic desc')
+        genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+        genre2games = genre2games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
 
-      @games += genre2games.take(20)
+        @games += genre2games.take(20)
 
-      if popular_genres.size > 2
-        genre3games = Genre.find(popular_genres.keys[2]).games.order('metacritic desc')
-        genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
-        genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
+        if popular_genres.size > 2
+          genre3games = Genre.find(popular_genres.keys[2]).games.order('metacritic desc')
+          genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, completed: true)
+          genre3games = genre3games.where_not_exists(:user_games, user_id: current_user.id, recommend: false)
 
-        @games += genre3games.take(20)
+          @games += genre3games.take(20)
+        end
       end
-    end
 
-    @games = @games.uniq.shuffle.take(20)
+      @games = @games.uniq.shuffle.take(20)
+
+    end
 
   end
 
