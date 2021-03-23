@@ -8,7 +8,7 @@
   <div class="d-flex flex-column align-items-center">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link m-auto text-colour-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link m-auto text-colour-white completed-button" style="text-decoration: none;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Completed
         </button>
       </h5>
@@ -20,14 +20,14 @@
         <% if user_game.completed %>
           <%= render "card", game: user_game.game %>
         <% end %>
-    <% end %> 
+    <% end %>
       </div>
     </div>
   </div>
   <div class="">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed m-auto text-colour-white" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed m-auto text-colour-white owned-button" style="text-decoration: none;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Owned
         </button>
       </h5>
@@ -45,7 +45,7 @@
   <div class="">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed m-auto text-colour-white" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed m-auto text-colour-white wishlist-button" style="text-decoration: none;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Wishlist
         </button>
       </h5>
