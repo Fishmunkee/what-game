@@ -10,18 +10,18 @@
     </div>
    <% end %>
 
-  <div class="d-flex flex-column justify-content-around ml-5">
+  <div class="d-flex flex-column justify-content-around ml-5 icon-align">
     <% if current_user %>
     <%= simple_form_for @user_game, url: setstatus_user_games_path, method: :post do |f| %>
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.completed %>
         <%= f.hidden_field :completed, value: "0" %>
         <%= image_submit_tag("trophy_completed.svg", class: "icons") %>
-        <p class="text-description"><%= "Completed" %></p>
+        <p class="text-description icon-align"><%= "Completed" %></p>
       <% else %>
         <%= f.hidden_field :completed, value: "1" %>
         <%= image_submit_tag("trophy.svg", class: "icons") %>
-        <p class="text-description"><%= "Completed" %></p> 
+        <p class="text-description icon-align"><%= "Completed" %></p> 
       <% end %>
     <% end %>
     <% end %>
@@ -32,12 +32,12 @@
       <% if @user_game.owned %>
         <%= f.hidden_field :owned, value: "0" %>
         <%= image_submit_tag("treasure_completed.svg", class: "icons") %>
-        <p class="text-description"><%= "Owned" %></p> 
+        <p class="text-description icon-align"><%= "Owned" %></p> 
 
       <% else %>
         <%= f.hidden_field :owned, value: "1" %>
         <%= image_submit_tag("treasure.svg", class: "icons") %>
-        <p class="text-description"><%= "Owned" %></p> 
+        <p class="text-description icon-align"><%= "Owned" %></p> 
       <% end %>
     <% end %>
     <% end %>
@@ -49,11 +49,11 @@
         <%= f.hidden_field :wishlist, value: "0" %>
         <%= image_submit_tag("heart_completed.svg", class: "icons") %>
 
-        <p class="text-description"><%= "Wishlist" %></p>  
+        <p class="text-description icon-align"><%= "Wishlist" %></p>  
       <% else %>
         <%= f.hidden_field :wishlist, value: "1" %>
         <%= image_submit_tag("heart.svg", class: "icons") %> 
-        <p class="text-description"><%= "Wishlist" %></p> 
+        <p class="text-description icon-align"><%= "Wishlist" %></p> 
 
       <% end %>
     <% end %>
