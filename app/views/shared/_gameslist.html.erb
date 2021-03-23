@@ -1,6 +1,7 @@
 <!-- <div class="container-index">
   <div class= "cards"> -->
   <div class="cards">
+    <% if @games %>
     <% @games.each do |game| %>
     <% url = game.medium.where(media_type: "cover").first&.url %>
       <div class="card game-card" style='background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("https://images.igdb.com/igdb/image/upload/t_cover_big_2x/<%= url %>.jpg");'>
@@ -76,5 +77,6 @@
 
       </div>
 
+    <% end %>
     <% end %>
   </div>
