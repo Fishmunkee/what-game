@@ -1,11 +1,43 @@
 .games-list {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
 }
+
+.completed-button {
+  border: 1px outset violet;
+  border-radius: 5px;
+  transition: 0.3s ease;
+     &:hover {
+        transform: scale(1.1);
+        color: white;
+     }
+}
+
+.wishlist-button {
+  border: 1px outset violet;
+  border-radius: 5px;
+  transition: 0.3s ease;
+     &:hover {
+        transform: scale(1.1);
+        color: white;
+     }
+}
+
+.owned-button {
+  border: 1px outset violet;
+  border-radius: 5px;
+  transition: 0.3s ease;
+     &:hover {
+        transform: scale(1.1);
+        color: white;
+     }
+}
+
 
 .text-colour-white {
   color: #FFFFFF;
+  margin-bottom: 45px;
 }
 
 body {
