@@ -60,9 +60,9 @@
         </div>
             <!-- <p><%= game.description %></p> -->
         <div class="metacritic">
-          <% if game.metacritic.to_i <= 50 %>
+          <% if game.metacritic.to_f.round <= 50 %>
             <p class="metacritic-low"><%= game.metacritic.to_f.round %></p>
-          <% elsif game.metacritic.to_i <= 74 %>
+          <% elsif game.metacritic.to_f.round <= 74 %>
             <p class="metacritic-med"><%= game.metacritic.to_f.round %></p>
           <% else %>
             <p class="metacritic-hi"><%= game.metacritic.to_f.round %></p>
