@@ -13,7 +13,43 @@
       <%= submit_tag "Search", class: "btn btn-outline my-2 my-sm-0 mr-4" %>
       <%= link_to "Filter", advanced_search_index_path, class: "btn btn-outline my-2 my-sm-0 mr-4 d-flex" %>
       <%= link_to random_games_path do %>
-        <%=  image_tag ("dice.png"), class: "random-dice" %>
+        <div id="perspective">
+    <div id="die-1" class="die">
+        <div class="face face-1">
+            <div class="dot"></div>
+        </div>
+        <div class="face face-2">
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="face face-3">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="face face-4">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="face face-5">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="face face-6">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</div>
       <% end %>
     <% end %>
 <% end %>
