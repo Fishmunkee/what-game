@@ -6,7 +6,7 @@
 
 .completed-button {
   border: 1px outset violet;
-  border-radius: 5px;
+  border-radius: 2px;
   transition: 0.3s ease;
      &:hover {
         transform: scale(1.1);
@@ -16,7 +16,7 @@
 
 .wishlist-button {
   border: 1px outset violet;
-  border-radius: 5px;
+  border-radius: 2px;
   transition: 0.3s ease;
      &:hover {
         transform: scale(1.1);
@@ -26,7 +26,7 @@
 
 .owned-button {
   border: 1px outset violet;
-  border-radius: 5px;
+  border-radius: 2px;
   transition: 0.3s ease;
      &:hover {
         transform: scale(1.1);
