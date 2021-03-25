@@ -4,9 +4,9 @@
     <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
     <div class="d-flex flex-column justify-content-around ml-5">
       <h3><%= @game.title %></h3>
-      <p>Genres: <%= @game.genres&.pluck(:name).to_sentence %></p>
-      <p>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></p>
-      <p>Rating: <%= @game.metacritic.to_f.round %></p>
+      <h5>Genres: <%= @game.genres&.pluck(:name).to_sentence %></h5>
+      <h5>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></h5>
+      <h5>Rating: <%= @game.metacritic.to_f.round %></h5>
     </div>
    <% end %>
 
