@@ -4,9 +4,9 @@
     <%= image_tag "https://images.igdb.com/igdb/image/upload/t_cover_big/#{media.url}.jpg" %>
     <div class="d-flex flex-column justify-content-around ml-5">
       <h3><%= @game.title %></h3>
-      <p>Genres: <%= @game.genres&.pluck(:name).to_sentence %></p>
-      <p>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></p>
-      <p>Rating: <%= @game.metacritic.to_f.round %></p>
+      <h5>Genres: <%= @game.genres&.pluck(:name).to_sentence %></h5>
+      <h5>Platforms: <%= @game.platforms&.pluck(:name).to_sentence %></h5>
+      <h5>Rating: <%= @game.metacritic.to_f.round %></h5>
     </div>
    <% end %>
 
@@ -16,11 +16,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.completed %>
         <%= f.hidden_field :completed, value: "0" %>
-        <%= image_submit_tag("trophy_completed.svg", class: "icons") %>
+        <%= image_submit_tag("trophy_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Completed" %></p>
       <% else %>
         <%= f.hidden_field :completed, value: "1" %>
-        <%= image_submit_tag("trophy.svg", class: "icons") %>
+        <%= image_submit_tag("trophy.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Completed" %></p> 
       <% end %>
     <% end %>
@@ -31,12 +31,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.owned %>
         <%= f.hidden_field :owned, value: "0" %>
-        <%= image_submit_tag("treasure_completed.svg", class: "icons") %>
+        <%= image_submit_tag("treasure_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Owned" %></p> 
-
       <% else %>
         <%= f.hidden_field :owned, value: "1" %>
-        <%= image_submit_tag("treasure.svg", class: "icons") %>
+        <%= image_submit_tag("treasure.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Owned" %></p> 
       <% end %>
     <% end %>
@@ -47,12 +46,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.wishlist %>
         <%= f.hidden_field :wishlist, value: "0" %>
-        <%= image_submit_tag("heart_completed.svg", class: "icons") %>
-
+        <%= image_submit_tag("heart_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Wishlist" %></p>  
       <% else %>
         <%= f.hidden_field :wishlist, value: "1" %>
-        <%= image_submit_tag("heart.svg", class: "icons") %> 
+        <%= image_submit_tag("heart.svg", class: "icons hover-icons") %> 
         <p class="text-description icon-align"><%= "Wishlist" %></p> 
 
       <% end %>
@@ -62,11 +60,12 @@
   </div>
 
   <div>
-    <p class="text-description">Description: <%= @game.description %></p>
+    <h5>Description:</h5>
+    <p class="text-description"> <%= @game.description %></p>
   </div>
   <div>
 
-  <h5 class="mt-5 text-description">Screenshots</h5>
+  <h5 class="mt-5">Screenshots</h5>
     <div class='cards-media mb-5'>
       <% @game.medium.where("media_type = 'screenshot'").take(4).each do |media| %>
         <div class="card-screenshot">
@@ -76,7 +75,7 @@
     </div>
 
   <% if @game.medium.where("media_type = 'video'").exists? %>
-    <h5 class="mt-5 text-description">Videos</h5>
+    <h5 class="mt-5">Videos</h5>
       <div class="cards-media mb-5">
         <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
           <div class="card-video">
@@ -87,4 +86,3 @@
     <% end %>
   </div>
 </div>
-
