@@ -60,11 +60,12 @@
   </div>
 
   <div>
-    <p class="text-description">Description: <%= @game.description %></p>
+    <h5>Description:</h5>
+    <p class="text-description"> <%= @game.description %></p>
   </div>
   <div>
 
-  <h5 class="mt-5 text-description">Screenshots</h5>
+  <h5 class="mt-5">Screenshots</h5>
     <div class='cards-media mb-5'>
       <% @game.medium.where("media_type = 'screenshot'").take(4).each do |media| %>
         <div class="card-screenshot">
@@ -74,7 +75,7 @@
     </div>
 
   <% if @game.medium.where("media_type = 'video'").exists? %>
-    <h5 class="mt-5 text-description">Videos</h5>
+    <h5 class="mt-5">Videos</h5>
       <div class="cards-media mb-5">
         <% @game.medium.where("media_type = 'video'").take(4).each do |media| %>
           <div class="card-video">
