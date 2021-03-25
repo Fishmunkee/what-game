@@ -1,5 +1,5 @@
 meta_product_name: "What Game"
 meta_title: "What Game - Find your next game with us!"
-meta_description: "Use our site to help you find your next game favourite game to play!"
+meta_description: "Use our site to help you find your next favourite game to play!"
 meta_image: "cover.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
