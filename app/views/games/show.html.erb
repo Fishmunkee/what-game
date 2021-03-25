@@ -16,11 +16,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.completed %>
         <%= f.hidden_field :completed, value: "0" %>
-        <%= image_submit_tag("trophy_completed.svg", class: "icons") %>
+        <%= image_submit_tag("trophy_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Completed" %></p>
       <% else %>
         <%= f.hidden_field :completed, value: "1" %>
-        <%= image_submit_tag("trophy.svg", class: "icons") %>
+        <%= image_submit_tag("trophy.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Completed" %></p> 
       <% end %>
     <% end %>
@@ -31,12 +31,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.owned %>
         <%= f.hidden_field :owned, value: "0" %>
-        <%= image_submit_tag("treasure_completed.svg", class: "icons") %>
+        <%= image_submit_tag("treasure_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Owned" %></p> 
-
       <% else %>
         <%= f.hidden_field :owned, value: "1" %>
-        <%= image_submit_tag("treasure.svg", class: "icons") %>
+        <%= image_submit_tag("treasure.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Owned" %></p> 
       <% end %>
     <% end %>
@@ -47,12 +46,11 @@
       <%= f.hidden_field :game_id, value: @game.id %>
       <% if @user_game.wishlist %>
         <%= f.hidden_field :wishlist, value: "0" %>
-        <%= image_submit_tag("heart_completed.svg", class: "icons") %>
-
+        <%= image_submit_tag("heart_completed.svg", class: "icons hover-icons") %>
         <p class="text-description icon-align"><%= "Wishlist" %></p>  
       <% else %>
         <%= f.hidden_field :wishlist, value: "1" %>
-        <%= image_submit_tag("heart.svg", class: "icons") %> 
+        <%= image_submit_tag("heart.svg", class: "icons hover-icons") %> 
         <p class="text-description icon-align"><%= "Wishlist" %></p> 
 
       <% end %>
@@ -87,4 +85,3 @@
     <% end %>
   </div>
 </div>
-
